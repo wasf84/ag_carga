@@ -74,4 +74,4 @@ class Individuo:
         self.cromossomo = randBinList(8)
         self.calcularUtilidade()
         self.calcularCargaTotal()
-        self.printIndividuo()
+        # self.printIndividuo()
