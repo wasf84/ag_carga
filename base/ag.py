@@ -41,7 +41,7 @@ class AG:
             print "x ---------------------- x"
 
     # ------------------------------------ #
-    def selecionarMelhorGeracao(self):
+    def selecionarMelhorPopulacao(self):
         # Primeiro eu pego os individuos que estao dentro do limite de carga do aviao, que eh de 5 toneladas.
         listaMelhores = []
         for i in range(0, len(self.populacao)):
@@ -49,3 +49,10 @@ class AG:
                 listaMelhores.append(self.populacao[i])
 
         # Agora pego quem tiver a maior utilidade.
+        melhor = listaMelhores[0]
+
+        for i in range(1, len(listaMelhores)):
+            if listaMelhores[i].retornaUtilidade() > melhor.retornaUtilidade():
+                melhor = listaMelhores[i]
+
+        return melhor
