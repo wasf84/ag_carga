@@ -5,15 +5,16 @@ __author__ = 'Mirele'
 from individuo import *
 
 class AG:
-    geracao = None
-    populacao = []
-
     # ------------------------------------ #
     def __init__(self):
         """
         Vai gerar a populacao inicial aqui dentro.
         Sempre 16 individuos.
         """
+
+        # Inicializacao dos atributos da classe
+        self.geracao = None
+        self.populacao = []
 
         self.geracao = 1
         for i in range(0, 16):
@@ -90,13 +91,39 @@ class AG:
         elif (individuo1.retornaCargaTotal() <= 5) and (individuo2.retornaCargaTotal() > 5):
             return individuo1
         # O individuo 2 estah dentro do limite mas o individuo 1 nao.
-        else:
+        elif (individuo1.retornaCargaTotal() > 5) and (individuo2.retornaCargaTotal() <= 5):
             return individuo2
+        else:
+            # Pode acontecer que nenhum dos dois testados esteja dentro do limite da carga.
+            # Sendo assim, eu escolho o "menos pior", o que estah mais perto do limite da carga de 5T.
+            if individuo1.retornaCargaTotal() < individuo2.retornaCargaTotal():
+                return individuo1
+            elif individuo2.retornaCargaTotal() < individuo1.retornaCargaTotal():
+                return individuo2
+            else:
+                # Coincidentemente, ambos tem o mesmo valor de carga. Deliberadamente escolho um deles.
+                return individuo1
 
     # ------------------------------------ #
     def pareamento(self, index):
         """
-
         :param index:
-        :return:
+        :return: o melhor individuo da populacao de filhos pareados.
         """
+
+        # A nova populacao
+        novaPopulacao = []
+
+        # Individuos gerados do pareamento.
+        lstIndividuos = []
+
+        for i in range(0, 16):
+            if index != i:
+                parente1 = self.populacao[index]
+                parente2 = self.populacao[i]
+                cromoFilho1 = parente1.cromossomo[0:4]
+                cromoFilho1 += parente2.cromossomo[4:8]
+                filho1 = Individuo(cromoFilho1)
+                cromoFilho2 = parente2.cromossomo[0:4]
+                cromoFilho2 += parente1.cromossomo[4:8]
+                filho2 = Individuo(cromoFilho2)

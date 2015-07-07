@@ -5,17 +5,22 @@ __author__ = 'Mirele'
 from random import randint
 
 class Individuo:
-    cromossomo = []
-    utilidade = None
-    carga = None
-
     # ------------------------------------ #
-    def __init__(self):
-        # Gerando uma lista binaria aleatoria
-        # fonte: <http://code.activestate.com/recipes/577944-random-binary-list/>
-        randBinList = lambda n: [randint(0, 1) for b in range(1, n+1)]
+    def __init__(self, cromo = None):
 
-        self.cromossomo = randBinList(8)
+        # Inicializacao dos atributos da classe
+        self.cromossomo = []
+        self.utilidade = None
+        self.carga = None
+
+        if cromo is None:
+            # Gerando uma lista binaria aleatoria
+            # fonte: <http://code.activestate.com/recipes/577944-random-binary-list/>
+            randBinList = lambda n: [randint(0, 1) for b in range(1, n+1)]
+            self.cromossomo = randBinList(8)
+        else:
+            self.cromossomo = cromo
+
         self.calcularUtilidade()
         self.calcularCargaTotal()
         # self.printIndividuo()
