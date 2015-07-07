@@ -5,6 +5,12 @@ __author__ = 'Mirele'
 from individuo import *
 
 class AG:
+    """
+    Atributos da classe:
+    -   geracao     : inteiro
+    -   populacao[] : vetor de objetos Individuo.
+    """
+
     # ------------------------------------ #
     def __init__(self):
         """
@@ -20,6 +26,7 @@ class AG:
         for i in range(0, 16):
             ind = Individuo()
             self.populacao.append(ind)
+    # ------------------------------------ #
 
     # ------------------------------------ #
     def printTudo(self):
@@ -34,6 +41,7 @@ class AG:
             print "x ---------------------- x"
             print "ID: " + str(i)
             self.populacao[i].printIndividuo()
+    # ------------------------------------ #
 
     # ------------------------------------ #
     def printUmEspecifico(self, index):
@@ -49,6 +57,7 @@ class AG:
             print "ID: " + str(index)
             self.populacao[index].printIndividuo()
             print "x ---------------------- x"
+    # ------------------------------------ #
 
     # ------------------------------------ #
     def selecionarMelhorPopulacao(self):
@@ -67,6 +76,7 @@ class AG:
                 melhor = listaMelhores[i]
 
         return melhor
+    # ------------------------------------ #
 
     # ------------------------------------ #
     def escolherMelhor(self, individuo1, individuo2):
@@ -103,6 +113,7 @@ class AG:
             else:
                 # Coincidentemente, ambos tem o mesmo valor de carga. Deliberadamente escolho um deles.
                 return individuo1
+    # ------------------------------------ #
 
     # ------------------------------------ #
     def pareamento(self, index):
@@ -127,3 +138,4 @@ class AG:
                 cromoFilho2 = parente2.cromossomo[0:4]
                 cromoFilho2 += parente1.cromossomo[4:8]
                 filho2 = Individuo(cromoFilho2)
+    # ------------------------------------ #

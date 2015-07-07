@@ -5,6 +5,13 @@ __author__ = 'Mirele'
 from random import randint
 
 class Individuo:
+    """
+    Atributos da classe:
+    -   cromossomo[]    : vetor de binarios
+    -   utilidade       : inteiro
+    -   carga           : inteiro
+    """
+
     # ------------------------------------ #
     def __init__(self, cromo = None):
 
