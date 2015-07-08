@@ -11,7 +11,7 @@ def main():
     """
 
     ag_mirele = AG()
-    melhor = ag_mirele.selecionarMelhorPopulacao()
+    melhor = ag_mirele.selecionarMelhorPopulacao(ag_mirele.populacao)
     melhor.printIndividuo()
 
 

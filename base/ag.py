@@ -60,12 +60,12 @@ class AG:
     # ------------------------------------ #
 
     # ------------------------------------ #
-    def selecionarMelhorPopulacao(self):
+    def selecionarMelhorPopulacao(self, lista = None):
         # Primeiro eu pego os individuos que estao dentro do limite de carga do aviao (5 toneladas).
         listaMelhores = []
-        for i in range(0, len(self.populacao)):
-            if self.populacao[i].retornaCargaTotal() <= 5:
-                listaMelhores.append(self.populacao[i])
+        for i in range(0, len(lista)):
+            if lista[i].retornaCargaTotal() <= 5:
+                listaMelhores.append(lista[i])
 
         # Agora pego quem tiver a maior utilidade.
         # Comeco supondo que o primeiro individuo que eh o melhor.
@@ -128,14 +128,20 @@ class AG:
         # Individuos gerados do pareamento.
         lstIndividuos = []
 
-        for i in range(0, 16):
-            if index != i:
-                parente1 = self.populacao[index]
-                parente2 = self.populacao[i]
-                cromoFilho1 = parente1.cromossomo[0:4]
-                cromoFilho1 += parente2.cromossomo[4:8]
-                filho1 = Individuo(cromoFilho1)
-                cromoFilho2 = parente2.cromossomo[0:4]
-                cromoFilho2 += parente1.cromossomo[4:8]
-                filho2 = Individuo(cromoFilho2)
+        while len(novaPopulacao) < 16:
+            for i in range(0, 16):
+                if index != i:
+                    parente1 = self.populacao[index]
+                    parente2 = self.populacao[i]
+                    cromoFilho1 = parente1.cromossomo[0:4]
+                    cromoFilho1 += parente2.cromossomo[4:8]
+                    filho1 = Individuo(cromoFilho1)
+                    cromoFilho2 = parente2.cromossomo[0:4]
+                    cromoFilho2 += parente1.cromossomo[4:8]
+                    filho2 = Individuo(cromoFilho2)
+                    melhor = self.escolherMelhor(filho1, filho2)
+
+                    # Nesta lista vai ficando apenas os melhores filhos gerados.
+                    lstIndividuos.append(melhor)
+
     # ------------------------------------ #
