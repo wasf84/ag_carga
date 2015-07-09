@@ -4,6 +4,7 @@ __author__ = 'Mirele'
 
 from base.ag import *
 
+# ------------------------------- #
 def main():
     """
     Método de inicialização da aplicação.
@@ -15,13 +16,14 @@ def main():
     # melhor.printIndividuo()
 
     # quantas vezes o AG vai ser executado para tentar convergir para o resultado otimo (local ou global, tanto faz...)
-    maxIter = 30
+    maxGer = 30
 
     i = 0
-    while i < maxIter:
-        ag_mirele.pareamento()
-        i =+ 1
-
+    while i < maxGer:
+        ag_mirele.printTudo("ger" + str(i))
+        ag_mirele.executarAG()
+        i += 1
+# ------------------------------- #
 
 # ------------------------------- #
 # ------------------------------- #

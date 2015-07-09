@@ -29,18 +29,30 @@ class AG:
     # ------------------------------------ #
 
     # ------------------------------------ #
-    def printTudo(self):
+    def printTudo(self, fileName = None):
         """
-        Imprime tudo que contiver no AG
+        Imprime, tudo que contiver no AG
 
-        :return: dados no console (pode ser modificado para imprimir num arquivo de texto).
+        :return: dados no console ou para um arquivo externo.
         """
 
-        print "Geracao: " + str(self.geracao)
-        for i in range(0, len(self.populacao)):
-            print "x ---------------------- x"
-            print "ID: " + str(i)
-            self.populacao[i].printIndividuo()
+        if fileName is None:    # Vai imprimir no terminal
+            print "Geracao: " + str(self.geracao)
+            for i in range(0, len(self.populacao)):
+                print "x ---------------------- x"
+                print "ID: " + str(i)
+                self.populacao[i].printIndividuo()
+        else:   # Vai imprimir num arquivo TXT
+            f = open(fileName, 'w')
+            f.write("Geracao: " + str(self.geracao) + "\n")
+            for i in range(0, len(self.populacao)):
+                f.write("x ---------------------- x" + "\n")
+                f.write("ID: " + str(i) + "\n")
+                f.write("Cromossomo: " + str(self.populacao[i].cromossomo) + "\n")
+                f.write("Utilidade: " + str(self.populacao[i].retornaUtilidade()) + "\n")
+                f.write("Carga Total: " + str(self.populacao[i].retornaCargaTotal()) + "\n")
+
+            f.close()
     # ------------------------------------ #
 
     # ------------------------------------ #
@@ -144,16 +156,16 @@ class AG:
     # ------------------------------------ #
 
     # ------------------------------------ #
-    def gerarNovaPopulacao(self):
+    def executarAG(self):
         """
         :return: um vetor com a nova populacao.
         """
 
-        # A nova populacao
+        # A nova populacao que serah gerada
         novaPopulacao = []
 
         for i in range(0, 16):
             novaPopulacao.append(self.pareamento(i))
 
-        return novaPopulacao
+        self.populacao = novaPopulacao
     # ------------------------------------ #
