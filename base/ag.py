@@ -118,30 +118,42 @@ class AG:
     # ------------------------------------ #
     def pareamento(self, index):
         """
-        :param index:
+        :param index: indice do individuo que vou fixar e parear com os demais individuos da populacao.
         :return: o melhor individuo da populacao de filhos pareados.
+        """
+
+        # Individuos gerados do pareamento.
+        lstIndividuos = []
+
+        for i in range(0, 16):
+            if index != i:
+                parente1 = self.populacao[index]
+                parente2 = self.populacao[i]
+                cromoFilho1 = parente1.cromossomo[0:4]
+                cromoFilho1 += parente2.cromossomo[4:8]
+                filho1 = Individuo(cromoFilho1)
+                cromoFilho2 = parente2.cromossomo[0:4]
+                cromoFilho2 += parente1.cromossomo[4:8]
+                filho2 = Individuo(cromoFilho2)
+
+                # Nesta lista vai ficando apenas os melhores filhos gerados.
+                melhor = self.escolherMelhor(filho1, filho2)
+                lstIndividuos.append(melhor)
+
+        return self.selecionarMelhorPopulacao(lstIndividuos)
+    # ------------------------------------ #
+
+    # ------------------------------------ #
+    def gerarNovaPopulacao(self):
+        """
+        :return: um vetor com a nova populacao.
         """
 
         # A nova populacao
         novaPopulacao = []
 
-        # Individuos gerados do pareamento.
-        lstIndividuos = []
+        for i in range(0, 16):
+            novaPopulacao.append(self.pareamento(i))
 
-        while len(novaPopulacao) < 16:
-            for i in range(0, 16):
-                if index != i:
-                    parente1 = self.populacao[index]
-                    parente2 = self.populacao[i]
-                    cromoFilho1 = parente1.cromossomo[0:4]
-                    cromoFilho1 += parente2.cromossomo[4:8]
-                    filho1 = Individuo(cromoFilho1)
-                    cromoFilho2 = parente2.cromossomo[0:4]
-                    cromoFilho2 += parente1.cromossomo[4:8]
-                    filho2 = Individuo(cromoFilho2)
-                    melhor = self.escolherMelhor(filho1, filho2)
-
-                    # Nesta lista vai ficando apenas os melhores filhos gerados.
-                    lstIndividuos.append(melhor)
-
+        return novaPopulacao
     # ------------------------------------ #

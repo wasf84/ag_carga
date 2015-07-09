@@ -11,8 +11,16 @@ def main():
     """
 
     ag_mirele = AG()
-    melhor = ag_mirele.selecionarMelhorPopulacao(ag_mirele.populacao)
-    melhor.printIndividuo()
+    # melhor = ag_mirele.selecionarMelhorPopulacao(ag_mirele.populacao)
+    # melhor.printIndividuo()
+
+    # quantas vezes o AG vai ser executado para tentar convergir para o resultado otimo (local ou global, tanto faz...)
+    maxIter = 30
+
+    i = 0
+    while i < maxIter:
+        ag_mirele.pareamento()
+        i =+ 1
 
 
 # ------------------------------- #
