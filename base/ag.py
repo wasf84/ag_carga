@@ -2,14 +2,14 @@
 
 __author__ = 'Mirele'
 
-from random import randint
 from individuo import *
 
 class AG:
     """
     Atributos da classe:
     -   geracao     : inteiro
-    -   populacao[] : vetor de objetos Individuo.
+    -   populacao[] : vetor de objetos Individuo
+    -   taxaMutacao : inteiro (0, 100)
     """
 
     # ------------------------------------ #
@@ -22,7 +22,7 @@ class AG:
         # Inicializacao dos atributos da classe
         self.geracao = None
         self.populacao = []
-        self.taxaMutacao = 15
+        self.taxaMutacao = 4
 
         self.geracao = 1
         for i in range(0, 16):

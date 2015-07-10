@@ -12,17 +12,16 @@ def main():
     """
 
     ag_mirele = AG()
+    ag_mirele.printTudo("ger" + str(ag_mirele.geracao))
     # melhor = ag_mirele.selecionarMelhorPopulacao(ag_mirele.populacao)
     # melhor.printIndividuo()
 
     # quantas vezes o AG vai ser executado para tentar convergir para o resultado otimo (local ou global, tanto faz...)
-    maxGer = 100
+    maxGer = 200
 
-    i = 0
-    while i < maxGer:
-        ag_mirele.printTudo("ger" + str(i))
+    for i in range(0, maxGer):
         ag_mirele.executarAG()
-        i += 1
+        ag_mirele.printTudo("ger" + str(ag_mirele.geracao))
 # ------------------------------- #
 
 # ------------------------------- #
