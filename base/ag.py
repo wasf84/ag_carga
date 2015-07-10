@@ -2,6 +2,7 @@
 
 __author__ = 'Mirele'
 
+from random import randint
 from individuo import *
 
 class AG:
@@ -21,6 +22,7 @@ class AG:
         # Inicializacao dos atributos da classe
         self.geracao = None
         self.populacao = []
+        self.taxaMutacao = 15
 
         self.geracao = 1
         for i in range(0, 16):
@@ -141,18 +143,45 @@ class AG:
             if index != i:
                 parente1 = self.populacao[index]
                 parente2 = self.populacao[i]
-                cromoFilho1 = parente1.cromossomo[0:4]
-                cromoFilho1 += parente2.cromossomo[4:8]
-                filho1 = Individuo(cromoFilho1)
-                cromoFilho2 = parente2.cromossomo[0:4]
-                cromoFilho2 += parente1.cromossomo[4:8]
-                filho2 = Individuo(cromoFilho2)
+
+                alelos1_filho1 = parente1.cromossomo[0:4]
+                if randint(0, 100) <= self.taxaMutacao:
+                    self.mutacao(alelos1_filho1)
+
+                alelos2_filho1 = parente2.cromossomo[4:8]
+                if randint(0, 100) <= self.taxaMutacao:
+                    self.mutacao(alelos2_filho1)
+
+                cromossomo_filho1 = alelos1_filho1 + alelos2_filho1
+                filho1 = Individuo(cromossomo_filho1)
+
+                ###
+
+                alelos1_filho2 = parente2.cromossomo[0:4]
+                if randint(0, 100) <= self.taxaMutacao:
+                    self.mutacao(alelos1_filho2)
+
+                alelos2_filho2 = parente1.cromossomo[4:8]
+                if randint(0, 100) <= self.taxaMutacao:
+                    self.mutacao(alelos2_filho2)
+
+                cromossomo_filho2 = alelos1_filho2 + alelos2_filho2
+                filho2 = Individuo(cromossomo_filho2)
 
                 # Nesta lista vai ficando apenas os melhores filhos gerados.
                 melhor = self.escolherMelhor(filho1, filho2)
                 lstIndividuos.append(melhor)
 
         return self.selecionarMelhorPopulacao(lstIndividuos)
+    # ------------------------------------ #
+
+    # ------------------------------------ #
+    def mutacao(self, alelos):
+        index = randint(0, 3)
+        if alelos[index] == 0:
+            alelos[index] = 1
+        else:
+            alelos[index] = 0
     # ------------------------------------ #
 
     # ------------------------------------ #
@@ -167,5 +196,6 @@ class AG:
         for i in range(0, 16):
             novaPopulacao.append(self.pareamento(i))
 
+        self.geracao += 1
         self.populacao = novaPopulacao
     # ------------------------------------ #

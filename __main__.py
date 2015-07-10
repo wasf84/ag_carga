@@ -16,7 +16,7 @@ def main():
     # melhor.printIndividuo()
 
     # quantas vezes o AG vai ser executado para tentar convergir para o resultado otimo (local ou global, tanto faz...)
-    maxGer = 30
+    maxGer = 100
 
     i = 0
     while i < maxGer:
