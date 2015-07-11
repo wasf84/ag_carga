@@ -95,10 +95,9 @@ class AG:
     # ------------------------------------ #
     def escolherMelhor(self, individuo1, individuo2):
         """
-        Usar este metodo sempre apos o pareamento entre 2 cromossomos, para escolher
-            o melhor filho gerado.
-        Caso ambos tenham a mesma utilidade e estejam dentro do limite de carga,
-            nao faz distincao entre eles e retorna direto o primeiro filho.
+        Usar este metodo sempre apos o pareamento entre 2 cromossomos, para escolher o melhor filho gerado.
+        Caso ambos tenham a mesma utilidade e estejam dentro do limite de carga, nao faz distincao entre eles
+            e retorna direto o primeiro filho.
 
         :param individuo1: primeiro objeto individuo gerado apos o pareamento
         :param individuo2: segundo objeto individuo gerado apos o pareamento
