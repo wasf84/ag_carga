@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-__author__ = 'Mirele'
+__author__ = 'Welson'
 
 # ####################################################### #
 # #### Pasta com as classes e metodos usados no A.G. #### #

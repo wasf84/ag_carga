@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-__author__ = 'Mirele'
+__author__ = 'Welson'
 
 from base.ag import *
 
@@ -16,7 +16,8 @@ def main():
     # melhor = ag_mirele.selecionarMelhorPopulacao(ag_mirele.populacao)
     # melhor.printIndividuo()
 
-    # quantas vezes o AG vai ser executado para tentar convergir para o resultado otimo (local ou global, tanto faz...)
+    # quantas vezes o AG vai ser executado para tentar convergir para o
+    #   resultado otimo (local ou global, tanto faz...)
     maxGer = 200
 
     for i in range(0, maxGer):

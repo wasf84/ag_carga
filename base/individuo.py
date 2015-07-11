@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-__author__ = 'Mirele'
+__author__ = 'Welson'
 
 from random import randint
 

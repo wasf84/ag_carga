@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-__author__ = 'Mirele'
+__author__ = 'Welson'
 
 from individuo import *
 
@@ -95,13 +95,15 @@ class AG:
     # ------------------------------------ #
     def escolherMelhor(self, individuo1, individuo2):
         """
-        Usar este metodo sempre apos o pareamento entre 2 cromossomos, para escolher o melhor filho gerado.
-        Caso ambos tenham a mesma utilidade e estejam dentro do limite de carga, nao faz distincao entre eles e retorna
-            direto o primeiro filho.
+        Usar este metodo sempre apos o pareamento entre 2 cromossomos, para escolher
+            o melhor filho gerado.
+        Caso ambos tenham a mesma utilidade e estejam dentro do limite de carga,
+            nao faz distincao entre eles e retorna direto o primeiro filho.
 
         :param individuo1: primeiro objeto individuo gerado apos o pareamento
         :param individuo2: segundo objeto individuo gerado apos o pareamento
-        :return: retornarah o objeto individuo que tiver maior utilidade dentro do limite da carga total
+        :return: retornarah o objeto individuo que tiver maior utilidade
+            dentro do limite da carga total
         """
 
         # Verifico se ambos estao dentro do limte da carga total (<= 5T)
@@ -111,11 +113,11 @@ class AG:
                 return individuo1
             else:
                 return individuo2
-        # O individuo 1 estah dentro do limite mas o individuo 2 nao.
         elif (individuo1.retornaCargaTotal() <= 5) and (individuo2.retornaCargaTotal() > 5):
+            # O individuo 1 estah dentro do limite mas o individuo 2 nao.
             return individuo1
-        # O individuo 2 estah dentro do limite mas o individuo 1 nao.
         elif (individuo1.retornaCargaTotal() > 5) and (individuo2.retornaCargaTotal() <= 5):
+            # O individuo 2 estah dentro do limite mas o individuo 1 nao.
             return individuo2
         else:
             # Pode acontecer que nenhum dos dois testados esteja dentro do limite da carga.
@@ -155,7 +157,7 @@ class AG:
                 cromossomo_filho1 = alelos1_filho1 + alelos2_filho1
                 filho1 = Individuo(cromossomo_filho1)
 
-                ###
+                # # #
 
                 alelos1_filho2 = parente2.cromossomo[0:4]
                 if randint(0, 100) <= self.taxaMutacao:
@@ -186,10 +188,6 @@ class AG:
 
     # ------------------------------------ #
     def executarAG(self):
-        """
-        :return: um vetor com a nova populacao.
-        """
-
         # A nova populacao que serah gerada
         novaPopulacao = []
 
