@@ -4,6 +4,8 @@ __author__ = 'Welson'
 
 from individuo import *
 
+MAX_INDIVIDUOS = 40
+
 class AG:
     """
     Atributos da classe:
@@ -16,7 +18,7 @@ class AG:
     def __init__(self):
         """
         Vai gerar a populacao inicial aqui dentro.
-        Sempre 16 individuos.
+        Sempre MAX_INDIVIDUOS individuos.
         """
 
         # Inicializacao dos atributos da classe
@@ -25,7 +27,7 @@ class AG:
         self.taxaMutacao = 4
 
         self.geracao = 1
-        for i in range(0, 16):
+        for i in range(0, MAX_INDIVIDUOS):
             ind = Individuo()
             self.populacao.append(ind)
     # ------------------------------------ #
@@ -140,7 +142,7 @@ class AG:
         # Individuos gerados do pareamento.
         lstIndividuos = []
 
-        for i in range(0, 16):
+        for i in range(0, 40):
             if index != i:
                 parente1 = self.populacao[index]
                 parente2 = self.populacao[i]
@@ -190,7 +192,7 @@ class AG:
         # A nova populacao que serah gerada
         novaPopulacao = []
 
-        for i in range(0, 16):
+        for i in range(0, MAX_INDIVIDUOS):
             novaPopulacao.append(self.pareamento(i))
 
         self.geracao += 1
