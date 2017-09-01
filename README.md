@@ -1,4 +1,6 @@
 Para executar o AG.
 
 - no terminal:
-[code]  python "__main__.py" [/code]
+  ```bash
+  python "__main__.py"
+  ```
