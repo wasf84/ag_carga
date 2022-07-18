@@ -2,7 +2,7 @@
 
 __author__ = 'Welson'
 
-from individuo import *
+from base.individuo import *
 
 MAX_INDIVIDUOS = 40
 
@@ -41,10 +41,10 @@ class AG:
         """
 
         if fileName is None:    # Vai imprimir no terminal
-            print "Geracao: " + str(self.geracao)
+            print("Geracao: " + str(self.geracao))
             for i in range(0, len(self.populacao)):
-                print "x ---------------------- x"
-                print "ID: " + str(i)
+                print("x ---------------------- x")
+                print("ID: " + str(i))
                 self.populacao[i].printIndividuo()
         else:   # Vai imprimir num arquivo TXT
             f = open(fileName, 'w')
@@ -69,10 +69,10 @@ class AG:
         """
         # print "Geracao: " + str(self.geracao)
         if index in range(0, len(self.populacao)):
-            print "x ---------------------- x"
-            print "ID: " + str(index)
+            print("x ---------------------- x")
+            print("ID: " + str(index))
             self.populacao[index].printIndividuo()
-            print "x ---------------------- x"
+            print("x ---------------------- x")
     # ------------------------------------ #
 
     # ------------------------------------ #

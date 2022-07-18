@@ -18,7 +18,7 @@ def main():
 
     # quantas vezes o AG vai ser executado para tentar convergir para o
     #   resultado otimo (local ou global, tanto faz...)
-    maxGer = 100
+    maxGer = 15
 
     for i in range(0, maxGer):
         ag_mirele.executarAG()

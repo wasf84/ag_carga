@@ -84,6 +84,6 @@ class Individuo:
 
     # ------------------------------------ #
     def printIndividuo(self):
-        print "Cromossomo: " + str(self.cromossomo)
-        print "Utilidade: " + str(self.retornaUtilidade())
-        print "Carga Total: " + str(self.retornaCargaTotal())
+        print("Cromossomo: " + str(self.cromossomo))
+        print("Utilidade: " + str(self.retornaUtilidade()))
+        print("Carga Total: " + str(self.retornaCargaTotal()))
